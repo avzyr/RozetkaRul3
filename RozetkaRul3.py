@@ -14,6 +14,8 @@ with open(p2fws, 'r') as f:
 
 broadlink.setup(txtsett['wifi_name'], txtsett['wifi_pass'], 3)
 
+dvcs = broadlink.discover()
+
 def checkrozetkastate(ipadr, pwrlim):
     try:
         device: Device = broadlink.hello(ipadr)
