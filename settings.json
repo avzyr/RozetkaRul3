@@ -1,1 +1,14 @@
-{"wifi_name":"ret","wifi_pass":"let0let0","rozetki":[{"ipadr":"192.168.1.155","pwrlmt":333},{"ipadr":"192.168.1.333","pwrlmt":333}]}
+{
+  "wifi_name": "ret",
+  "wifi_pass": "let0let0",
+  "rozetki": [
+    {
+      "ipadr": "192.168.1.155",
+      "pwrlmt": 333
+    },
+    {
+      "ipadr": "192.168.1.333",
+      "pwrlmt": 333
+    }
+  ]
+}

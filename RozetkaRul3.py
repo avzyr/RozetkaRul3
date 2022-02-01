@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 
 import json
+import socket
 import broadlink
 import time
 import os
-
+from netifaces import interfaces, ifaddresses, AF_INET
 from broadlink import Device
 
 p2fws = os.path.dirname(os.path.abspath(__file__))+'/settings.json'
@@ -13,8 +14,6 @@ with open(p2fws, 'r') as f:
     f.close()
 
 broadlink.setup(txtsett['wifi_name'], txtsett['wifi_pass'], 3)
-
-dvcs = broadlink.discover()
 
 def checkrozetkastate(ipadr, pwrlim):
     try:
