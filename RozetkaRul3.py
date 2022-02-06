@@ -19,15 +19,19 @@ def checkrozetkastate(ipadr, pwrlim):
     try:
         device: Device = broadlink.hello(ipadr)
         device.auth()
-        state: object = device.get_energy()
-        print(f'{ipadr} sei chas imeet {state} sily. A vot porog ustanovlen na {pwrlim} sily')
-        if state <= pwrlim:
-            device.set_power(False)
-            time.sleep(30)
+        pwrstate = device.check_power()
+        if not pwrstate:
             device.set_power(True)
-            print(f'{ipadr} porog{pwrlim},a sei chas{state}. Perezagruzka svetit')
+        else:
+            state: object = device.get_energy()
+            print(f'{ipadr} на сей час мощность составляет {state} Ватт. А вот порог установлен на {pwrlim} Ватт')
+            if state <= pwrlim:
+                device.set_power(False)
+                time.sleep(30)
+                device.set_power(True)
+                print(f'{ipadr} порог{pwrlim},а сей час{state}. Перезагрузка светит')
     except Exception:
-        print(f'Ne konnekt k {ipadr}')
+        print(f'Не получилось соединиться с {ipadr}')
 
 for roz in txtsett['rozetki']:
     checkrozetkastate(roz['ipadr'], roz['pwrlmt'])
