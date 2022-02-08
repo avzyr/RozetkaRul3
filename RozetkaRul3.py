@@ -22,6 +22,7 @@ def checkrozetkastate(ipadr, pwrlim):
         pwrstate = device.check_power()
         if not pwrstate:
             device.set_power(True)
+            print(f'{ipadr} была выключена. Включаем.')
         else:
             state: object = device.get_energy()
             print(f'{ipadr} на сей час мощность составляет {state} Ватт. А вот порог установлен на {pwrlim} Ватт')

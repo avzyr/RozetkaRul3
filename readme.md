@@ -11,3 +11,7 @@ $HOME/di.sh
 crontab -e
 
 */10 * * * * $HOME/RozetkaRul3/RozetkaRul3.py
+
+приходится делать такое:
+sed -i -e 's/\r$//' $HOME/RozetkaRul3/RozetkaRul3.py
+
